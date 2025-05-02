@@ -17,7 +17,7 @@ public class SocialUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user" , cascade = {CascadeType.REMOVE ,CascadeType.PERSIST , CascadeType.MERGE})
     private SocialProfile socialProfile;
 
     @OneToMany(mappedBy = "socialUser")
@@ -34,5 +34,11 @@ public class SocialUser {
     @Override
     public int hashCode(){
         return Objects.hash(id);
+    }
+
+    //We are explicitily setting the user into social profile
+    public void setSocialProfile(SocialProfile socialProfile){
+        socialProfile.setUser(this);
+        this.socialProfile = socialProfile;
     }
 }
