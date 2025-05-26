@@ -48,7 +48,7 @@ public class HelloController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authernticateUser(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest){
         Authentication authentication ;
         try {
             authentication = authenticationManager.authenticate(
