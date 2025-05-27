@@ -1,8 +1,8 @@
 package com.project.SecurityLectures.controller;
 
 import com.project.SecurityLectures.jwt.JwtUtils;
-import com.project.SecurityLectures.jwt.LoginRequest;
-import com.project.SecurityLectures.jwt.LoginResponse;
+import com.project.SecurityLectures.requestResponse.LoginRequest;
+import com.project.SecurityLectures.requestResponse.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,7 +71,7 @@ public class HelloController {
                 .stream()
                 .map(item -> item.getAuthority())
                 .toList();
-        LoginResponse loginResponse = new LoginResponse(jwtToken,userDetails.getUsername(),roles);
+        LoginResponse loginResponse = new com.project.SecurityLectures.requestResponse.LoginResponse(jwtToken,userDetails.getUsername(),roles);
         return  ResponseEntity.ok(loginResponse);
     }
 }
